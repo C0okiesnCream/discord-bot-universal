@@ -8,8 +8,6 @@ OWNER_IDS = [763257828391124992]
 #add intents beneath this
 intent = Intents.all()
 intent.message_content = True
-intent.messages = True
-intent.members = True
 
 class bot(BotBase):
  def __init__(self):
@@ -19,7 +17,11 @@ class bot(BotBase):
   self.guild = None
   self.scheduler = AsyncIOScheduler
 
-  super().__init__(command_prefix=PREFIX, owner_ids=OWNER_IDS, intents=intent)
+  super().__init__(
+    command_prefix=PREFIX, 
+    owner_ids=OWNER_IDS, 
+    intents=intent.all
+    )
 
  def run(self, version):
   self.VERSION = version
@@ -28,7 +30,10 @@ class bot(BotBase):
    self.TOKEN = tf.read()
 
   print("running bot...")
-  super().run(self.TOKEN, reconnect=True)
+  super().run(
+    self.TOKEN, 
+    reconnect=True
+    )
 
  async def on_connect(self):
   print("bot connected")
