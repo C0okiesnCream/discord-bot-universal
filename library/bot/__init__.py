@@ -6,7 +6,10 @@ PREFIX = "+"
 OWNER_IDS = [763257828391124992]
 
 #add intents beneath this
-intent = Intents.default()
+intent = Intents.all()
+intent.message_content = True
+intent.messages = True
+intent.members = True
 
 class bot(BotBase):
  def __init__(self):
