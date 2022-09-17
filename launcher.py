@@ -1,5 +1,5 @@
 from library.bot import Universal
 
-VERSION = "alpha 0.1"
+VERSION = "alpha 0.2.1"
 
 Universal.run(VERSION)
